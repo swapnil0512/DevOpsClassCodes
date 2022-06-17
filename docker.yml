@@ -1,5 +1,5 @@
 ---
-- hosts: webservers
+- hosts: Slave
   become: true
   become_user: root
   tasks:
@@ -13,3 +13,5 @@
     git: repo=https://github.com/swapnil0512/DevOpsClassCodes.git dest=/tmp/gitrepo
   - name: build dockerfile
     command: chdir=/tmp/gitrepo docker build -t projectimage:ansible .
+  - name: run the dockerfile
+    command: docker run -itd -P projectimage:ansible
