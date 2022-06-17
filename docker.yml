@@ -10,6 +10,6 @@
   - name: install git
     yum: name=git state=present
   - name: get the dockerfile from githib
-    git: repo=https://github.com/Sonal0409/dockerdemo.git dest=/tmp/gitrepo
+    git: repo=https://github.com/swapnil0512/DevOpsClassCodes.git dest=/tmp/gitrepo
   - name: build dockerfile
-    command: chdir=/tmp/gitrepo docker build -t deployimage:ansible .
+    command: chdir=/tmp/gitrepo docker build -t projectimage:ansible .
