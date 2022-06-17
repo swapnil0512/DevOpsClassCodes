@@ -16,7 +16,12 @@
   - name: get the dockerfile from githib
     git: repo=https://github.com/swapnil0512/DevOpsClassCodes.git dest=/tmp/gitrepo
   - name: build dockerfile
-    command: chdir=/tmp/gitrepo docker build -t projectimage:ansible .
+    command: chdir=/tmp/gitrepo docker build -t projectimage:CICD .
   - name: run the dockerfile
-    command: docker run -itd -P projectimage:ansible
-
+    command: docker run -itd -P projectimage:CICD
+  - name: create tag to image
+    command: docker tag projectimage:CICD swapnil0512/projectimage:CICD
+  - name: loginto docker
+    command: docker login --username swapnil0512 --password Swapnil@5
+  - name: push image on to dockerhub
+    command: docker push swapnil0512/projectimage:CICD
